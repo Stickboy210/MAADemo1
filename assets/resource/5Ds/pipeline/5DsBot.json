@@ -1,0 +1,419 @@
+{
+  "HomePage": {
+    "next": [
+      "HomePageBot",
+      "HomePageNoName",
+      "Bonus",
+      "BatterierEmpty",
+      "HomePageSwitch"
+    ]
+  },
+  "Bonus": {
+    "recognition":"FeatureMatch",
+    "template": "Bonus.png",
+    "action": "Click",
+    "count":10,
+    "roi": [47, 635, 569, 482],
+    "green_mask":true,
+    "next":[
+      "BonusWait"
+    ]
+  },
+  "BonusWait": {
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "BonusEnd"
+    ]
+  },
+  "BonusEnd":{
+    "recognition":"OCR",
+    "expected":"确定",
+    "action":"Click",
+    "next":[
+      "BonusWait2"
+    ]
+  },
+  "BonusWait2": {
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "HomePage"
+    ]
+  },
+  "HomePageBot": {
+    "recognition": "FeatureMatch",
+    "template": [
+      "Bot1.png",
+      "Bot2.png",
+      "Bot3.png",
+      "Bot4.png",
+      "Bot5.png",
+      "Bot6.png",
+      "Bot7.png",
+      "Bot8.png",
+      "Bot9.png",
+      "Bot10.png",
+      "Bot11.png",
+      "Bot12.png"
+    ],
+    "count": 12,
+    "roi": [47, 635, 569, 482],
+    "detector": "SIFT",
+    "orger_by": "Score",
+    "green_mask":true,
+    "ratio": 1,
+    "action": "Click",
+    "target_offset":[25,25,0,0],
+    "next": [
+      "WaitDuel"
+    ]
+  },
+  "HomePageNoName": {
+    "recognition": "FeatureMatch",
+    "template": [
+      "NoName.png"
+    ],
+    "count": 10,
+    "roi": [47, 635, 569, 482],
+    "detector": "SIFT",
+    "orger_by": "Score",
+    "green_mask":true,
+    "ratio": 0.4,
+    "action": "Click",
+    "next": [
+      "WaitDuel"
+    ]
+  },
+  "StartDuel": {
+    "recognition": "DirectHit",
+    "action": "Click",
+    "target": [649, 761, 10, 10],
+    "next": [
+      "WaitDuel2"
+    ]
+  },
+  "StartDuel2": {
+    "recognition": "OCR",
+    "expected": "自动决斗", 
+    "action": "Click",
+    "next": [
+      "WaitDuelEnd"
+    ]
+  },
+  "WaitDuel": {
+    "pre_wait_freezes": {
+      "time": 500,
+      "threshold": 0.6
+    },
+    "next": [
+      "CheckNode",
+      "Return",
+      "ShutDown",
+      "HomePage"
+    ]
+  },
+  "CheckNode":{
+    "recognition":"ColorMatch",
+    "roi":[350,1241,10,10],
+    "lower": [[255, 255, 255], [255, 255, 255], [255, 255, 255]],
+    "upper":[[255,255,255],[255,255,255],[255,255,255]],
+    "count":100,
+    "next":[
+      "StartDuel"
+    ]
+  },
+  "Return":{
+    "recognition":"FeatureMatch",
+    "roi":[18, 1209, 695, 53],
+    "green_mask":true,
+    "template": [
+      "Home.png",
+      "Return.png"
+    ],
+    "count":10,
+    "action":"Click",
+    "next":[
+      "WaitDuel",
+      "HomePage"
+    ]
+  },
+  "ShutDown":{
+    "recognition":"OCR",
+    "expected":[
+      "关闭",
+      "取消"
+    ],
+    "action":"Click",
+    "next":[
+      "WaitDuel",
+      "HomePage"
+    ]
+  },
+  "WaitDuel2":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "StartDuel2"
+    ]
+  },
+  "WaitDuelEnd":{
+    "pre_wait_freezes": {
+      "time": 1000,
+      "threshold": 0.8
+    },
+    "next":[
+      "EndDuel"
+    ],
+    "interrupt":[
+      "WaitDuelEnd"
+    ]
+  },
+  "EndDuel": {
+    "recognition": "OCR",
+    "expected": [ "确定", "下一步", "关闭"],
+    "action": "Click",
+    "next": [
+      "WaitEndDuel"
+    ]
+  },
+  "WaitEndDuel":{
+    "pre_wait_freezes": {
+      "time": 1000,
+      "threshold": 0.8
+    },
+    "next": [
+      "WaitReward"
+    ]
+  },
+  "WaitReward":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next":[
+      "JustClick"
+    ]
+  },
+  "JustClick":{
+    "action":"Click",
+    "target": [643, 1196, 10, 10],
+    "next":[
+      "EndDuel2",
+      "JustClick"
+    ]
+  },
+  "EndDuel2": {
+    "recognition": "OCR",
+    "expected": [ "确定", "下一步", "关闭" ],
+    "action": "Click",
+    "next": [
+      "WaitEndDuel2"
+    ]
+  },
+  "WaitEndDuel2":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "EndDuel3"
+    ]
+  },
+  "EndDuel3": {
+    "recognition": "OCR",
+    "expected": [ "确定", "下一步", "关闭","取消"],
+    "action": "Click",
+    "next": [
+      "WaitEndDuel3"
+    ]
+  },
+  "WaitEndDuel3":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "EndDuel4",
+      "HomePage"
+    ]
+  },
+  "EndDuel4": {
+    "recognition": "OCR",
+    "expected": [ "确定", "下一步", "关闭","取消"],
+    "action": "Click",
+    "next": [
+      "WaitEndDuel4"
+    ]
+  },
+  "WaitEndDuel4":{
+    "pre_wait_freezes": {
+      "time": 1000,
+      "threshold": 0.6
+    },
+    "next": [
+      "JustClick2"
+    ]
+  },
+  "JustClick2":{
+    "action":"Click",
+    "target": [643, 1196, 10, 10],
+    "next":[
+      "WaitEvent"
+    ]
+  },
+  "WaitEvent":{
+    "pre_wait_freezes": {
+      "time": 1000,
+      "threshold": 0.8
+    },
+    "next":[
+      "StarDragon",
+      "EndDuel5",
+      "HomePage"
+    ]
+  },
+  "StarDragon":{
+    "recognition":"OCR",
+    "exected":"确认",
+    "action":"Click",
+    "next":[
+      "WaitX"
+    ]
+  },
+  "WaitX":{
+    "pre_wait_freezes": {
+      "time": 500,
+      "threshold": 0.8
+    },
+    "next":[
+      "EndDuel5",
+      "JustClick4"
+    ]
+  },
+  "JustClick4":{
+    "action":"Click",
+    "target": [643, 1196, 10, 10],
+    "next":[
+      "EndDuel5",
+      "HomePage"
+    ]
+  },
+  "EndDuel5": {
+    "recognition": "OCR",
+    "expected": [ "确定", "下一步", "关闭","取消"],
+    "action": "Click",
+    "next": [
+      "WaitEndDuel5"
+    ]
+  },
+  "WaitEndDuel5":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "CheckNode2",
+      "JustClick2"
+    ]
+  },
+  "CheckNode2":{
+    "recognition":"ColorMatch",
+    "roi":[350,1241,10,10],
+    "lower": [[255, 255, 255], [255, 255, 255], [255, 255, 255]],
+    "upper":[[255,255,255],[255,255,255],[255,255,255]],
+    "count":10,
+    "next":[
+      "JustClick3"
+    ]
+  },
+  "JustClick3":{
+    "action":"Click",
+    "target": [643, 1196, 10, 10],
+    "next":[
+      "WaitEndDuel6"
+    ]
+  },
+  "WaitEndDuel6":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "EndDuel6",
+      "HomePage"
+    ]
+  },
+  "EndDuel6": {
+    "recognition": "OCR",
+    "expected": [ "确定", "下一步", "关闭","取消"],
+    "action": "Click",
+    "next": [
+      "WaitEndDuel7"
+    ]
+  },
+  "WaitEndDuel7":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "EndDuel7",
+      "HomePage"
+    ]
+  },
+  "EndDuel7":{
+    "recognition": "OCR",
+    "expected": [ "确定", "下一步", "关闭","取消"],
+    "action": "Click",
+    "next": [
+      "WaitEndDuel8"
+    ]
+  },
+  "WaitEndDuel8":{
+    "pre_wait_freezes": {
+      "time": 600,
+      "threshold": 0.6
+    },
+    "next": [
+      "HomePage"
+    ]
+  },
+  "HomePageSwitch": {
+    "recognition": "DirectHit",
+    "action": "Swipe",
+    "begin": [649, 761, 10, 10],
+    "end": [382, 761, 10, 10],
+    "next": [
+      "SwitchWait"
+    ]
+  },
+  "SwitchWait":{
+    "pre_wait_freezes": {
+      "time": 1000,
+      "threshold": 0.6
+    },
+    "next": [
+      "HomePage"
+    ]
+  },
+  "BatterierEmpty":{
+    "recognition":"ColorMatch",
+    "roi":[109, 63, 8, 7],
+    "lower":[[99, 99, 172], [104, 104, 178], [94, 94, 175]],
+    "upper":[[99, 99, 173], [106, 106, 180], [97, 97, 175]],
+    "count":10,
+    "next":[
+      "Stop"
+    ]
+  },
+  "Stop":{
+    "action":"StopTask"
+  }
+}

@@ -15,60 +15,23 @@
     ],
     "resource": [
         {
-            "name": "官服",
+            "name": "DM世界",
             "path": [
-                "{PROJECT_DIR}/resource"
+                "{PROJECT_DIR}/resource/DM"
             ]
         },
         {
-            "name": "B 服",
+            "name": "5Ds世界",
             "path": [
-                "{PROJECT_DIR}/resource",
-                "{PROJECT_DIR}/resource_bilibili"
+                "{PROJECT_DIR}/resource/5Ds"
             ]
         }
     ],
     "task": [
         {
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
-        },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
+            "name": "主页人机",
+            "entry": "HomePage"
         }
     ],
-    "option": {
-        "任务选项1": {
-            "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
-        }
-    }
+    "version": "v0.0.1"
 }
