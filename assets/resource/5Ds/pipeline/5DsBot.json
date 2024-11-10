@@ -26,9 +26,9 @@
       "普拉西多.png",
       "安提诺米.png"
     ],
-    "count": 10,
+    "count": 5,
     "roi": [33, 630, 477, 462],
-    "detector": "SIFT",
+    "detector": "BRISK",
     "orger_by": "Score",
     "green_mask":true,
     "ratio": 0.4,
@@ -214,7 +214,7 @@
   },
   "WaitEndDuel":{
     "pre_wait_freezes": {
-      "time": 1000,
+      "time": 600,
       "threshold": 0.8
     },
     "next": [
