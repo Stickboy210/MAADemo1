@@ -21,9 +21,39 @@
             ]
         },
         {
+            "name": "DSOD世界",
+            "path": [
+                "{PROJECT_DIR}/resource/DSOD"
+            ]
+        },
+        {
+            "name": "GX世界",
+            "path": [
+                "{PROJECT_DIR}/resource/GX"
+            ]
+        },
+        {
             "name": "5Ds世界",
             "path": [
                 "{PROJECT_DIR}/resource/5Ds"
+            ]
+        },
+        {
+            "name": "Z4世界",
+            "path": [
+                "{PROJECT_DIR}/resource/Z4"
+            ]
+        },
+        {
+            "name": "A5世界",
+            "path": [
+                "{PROJECT_DIR}/resource/A5"
+            ]
+        },
+        {
+            "name": "V6世界",
+            "path": [
+                "{PROJECT_DIR}/resource/V6"
             ]
         }
     ],
