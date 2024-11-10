@@ -1,11 +1,40 @@
 {
   "HomePage": {
     "next": [
-      "HomePageBot",
       "HomePageNoName",
+      "HomePageDuelList",
+      "HomePageBot",
       "Bonus",
       "BatterierEmpty",
       "HomePageSwitch"
+    ]
+  },
+  "HomePageDuelList":{
+    "recognition":"FeatureMatch",
+    "template":[
+      "不动游星.png",
+      "杰克·亚特拉斯.png",
+      "乌鸦·霍根.png",
+      "十六夜亚纪.png",
+      "龙亚.png",
+      "龙可.png",
+      "卡利渚.png",
+      "暗印者鬼柳京介.png",
+      "暗印者卡利渚.png",
+      "暗印者雷克斯·戈德温.png",
+      "帕拉多格斯.png",
+      "普拉西多.png",
+      "安提诺米.png"
+    ],
+    "count": 10,
+    "roi": [33, 630, 477, 462],
+    "detector": "SIFT",
+    "orger_by": "Score",
+    "green_mask":true,
+    "ratio": 0.4,
+    "action": "Click",
+    "next": [
+      "WaitDuel"
     ]
   },
   "Bonus": {
