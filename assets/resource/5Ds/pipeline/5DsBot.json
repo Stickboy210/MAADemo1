@@ -28,7 +28,7 @@
     ],
     "count": 5,
     "roi": [33, 630, 477, 462],
-    "detector": "BRISK",
+    "detector": "SIFT",
     "orger_by": "Score",
     "green_mask":true,
     "ratio": 0.4,
@@ -198,9 +198,7 @@
       "threshold": 0.8
     },
     "next":[
-      "EndDuel"
-    ],
-    "interrupt":[
+      "EndDuel",
       "WaitDuelEnd"
     ]
   },
